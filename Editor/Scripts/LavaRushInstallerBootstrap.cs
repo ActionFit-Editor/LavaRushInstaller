@@ -16,14 +16,14 @@ namespace ActionFit.LavaRushInstaller.Editor
     {
         internal const string InstallerPackageId = "com.actionfit.lava-rush.installer";
         internal const string ManagerPackageId = "com.actionfit.custompackagemanager";
-        internal const string ManagerVersion = "1.1.95";
+        internal const string ManagerVersion = "1.1.96";
         internal const string ManagerRepository = "https://github.com/ActionFit-Editor/Custom_Package_Manager.git";
         internal const string ManagerGitUrl = ManagerRepository + "#" + ManagerVersion;
 
         private const string ProfileAssetPath = "Packages/com.actionfit.lava-rush.installer/Editor/ContentBundleProfile.json";
         private const string ManifestRelativePath = "Packages/manifest.json";
-        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.1";
-        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.1";
+        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.2";
+        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.2";
 
         private static AddRequest _managerRequest;
 

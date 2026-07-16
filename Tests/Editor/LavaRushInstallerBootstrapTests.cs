@@ -10,10 +10,10 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
     public sealed class LavaRushInstallerBootstrapTests
     {
         [TestCase("", "Missing")]
-        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.95", "Exact")]
+        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.96", "Exact")]
         [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.94", "UpgradeCanonical")]
         [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.2.0", "PreserveNewerCanonical")]
-        [TestCase("https://github.com/SomeoneElse/Custom_Package_Manager.git#1.1.95", "Conflict")]
+        [TestCase("https://github.com/SomeoneElse/Custom_Package_Manager.git#1.1.96", "Conflict")]
         [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#main", "Conflict")]
         [TestCase("file:com.actionfit.custompackagemanager", "Conflict")]
         public void ClassifyManagerDependency_PreservesUnsafeValuesAndUpgradesOnlyCanonicalOlderTag(
@@ -23,7 +23,7 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(LavaRushInstallerBootstrap.ClassifyManagerDependency(currentValue, "").ToString(), Is.EqualTo(expected));
         }
 
-        [TestCase("1.1.95", "EmbeddedCompatible")]
+        [TestCase("1.1.96", "EmbeddedCompatible")]
         [TestCase("1.2.0", "EmbeddedCompatible")]
         [TestCase("1.1.94", "EmbeddedTooOld")]
         public void ClassifyManagerDependency_PreservesEmbeddedPackage(string version, string expected)

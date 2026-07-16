@@ -6,7 +6,7 @@
 - Display name: ActionFit Lava Rush Installer
 - Repository: `https://github.com/ActionFit-Editor/LavaRushInstaller.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.1.1`
+- Current package version at generation time: `0.1.2`
 - Unity version: `6000.2`
 
 ## Purpose
@@ -25,7 +25,7 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 
 - `package.json` dependencies must remain empty because Git dependencies belong in the consuming project's top-level `Packages/manifest.json`.
 - The bootstrap assembly must compile without hard references to Custom Package Manager or any Lava Rush runtime/UI assembly.
-- It may bootstrap only canonical `com.actionfit.custompackagemanager@1.1.95` when the manager is missing or has an older tag from the same repository.
+- It may bootstrap only canonical `com.actionfit.custompackagemanager@1.1.96` when the manager is missing or has an older tag from the same repository.
 - Every bundle Git URL must use the canonical Public `ActionFit-Editor` repository and an exact version tag.
 - Preserve embedded packages, local/file dependencies, forks, branches, unparseable revisions, user changes, and equal/newer canonical tags.
 - Load `ActionFitContentBundleApi` through reflection and pass the package-shipped profile JSON to `InstallJson` or `RepairJson`.
@@ -38,11 +38,11 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 
 ## Current Bundle Profile
 
-- `com.actionfit.custompackagemanager@1.1.95`
-- `com.actionfit.content-core@0.2.0`
-- `com.actionfit.time@1.0.2`
-- `com.actionfit.lava-rush@0.1.1`
-- `com.actionfit.lava-rush.ui@0.1.1`
+- `com.actionfit.custompackagemanager@1.1.96`
+- `com.actionfit.content-core@0.2.1`
+- `com.actionfit.time@1.0.3`
+- `com.actionfit.lava-rush@0.1.3`
+- `com.actionfit.lava-rush.ui@0.1.3`
 - Authorized release GitHub login: `JewooSong`
 
 Every Git URL must use HTTPS and an exact version tag matching the declared version.

@@ -1,42 +1,42 @@
 {
   "schemaVersion": 1,
   "bundleId": "lava-rush",
-  "bundleVersion": "0.1.1",
+  "bundleVersion": "0.1.2",
   "displayName": "ActionFit Lava Rush",
   "bootstrapPackageId": "com.actionfit.lava-rush.installer",
   "packages": [
     {
       "packageId": "com.actionfit.custompackagemanager",
-      "version": "1.1.95",
-      "gitUrl": "https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.95",
+      "version": "1.1.96",
+      "gitUrl": "https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.96",
       "required": true,
       "removeOnRelease": false
     },
     {
       "packageId": "com.actionfit.content-core",
-      "version": "0.2.0",
-      "gitUrl": "https://github.com/ActionFit-Editor/ContentCore.git#0.2.0",
+      "version": "0.2.1",
+      "gitUrl": "https://github.com/ActionFit-Editor/ContentCore.git#0.2.1",
       "required": true,
       "removeOnRelease": true
     },
     {
       "packageId": "com.actionfit.time",
-      "version": "1.0.2",
-      "gitUrl": "https://github.com/ActionFit-Editor/Time.git#1.0.2",
+      "version": "1.0.3",
+      "gitUrl": "https://github.com/ActionFit-Editor/Time.git#1.0.3",
       "required": true,
       "removeOnRelease": true
     },
     {
       "packageId": "com.actionfit.lava-rush",
-      "version": "0.1.1",
-      "gitUrl": "https://github.com/ActionFit-Editor/LavaRush.git#0.1.1",
+      "version": "0.1.3",
+      "gitUrl": "https://github.com/ActionFit-Editor/LavaRush.git#0.1.3",
       "required": true,
       "removeOnRelease": true
     },
     {
       "packageId": "com.actionfit.lava-rush.ui",
-      "version": "0.1.1",
-      "gitUrl": "https://github.com/ActionFit-Editor/LavaRushUI.git#0.1.1",
+      "version": "0.1.3",
+      "gitUrl": "https://github.com/ActionFit-Editor/LavaRushUI.git#0.1.3",
       "required": true,
       "removeOnRelease": true
     }
