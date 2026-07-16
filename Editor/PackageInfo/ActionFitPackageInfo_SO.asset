@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5ab7e2b67b436db878fd7b023d8616, type: 3}
+  m_Name: ActionFitPackageInfo_SO
+  m_EditorClassIdentifier: 
+  _packageId: com.actionfit.lava-rush.installer
+  _displayName: ActionFit Lava Rush Installer
+  _repoName: LavaRushInstaller
+  _repositoryVisibility: 0
+  _owner: ActionFit
+  _status: candidate
+  _description: Installs and owns the mandatory Lava Rush engine, UI, Content Core,
+    Time, and Custom Package Manager bundle from one public Git URL, then self-removes
+    after verified registration.
+  _releaseNote: "- `ActionFit-Editor/LavaRushInstaller` Public Git UPM repository\uB85C
+    \uBC30\uD3EC\uD558\uB3C4\uB85D \uC800\uC7A5\uC18C \uACF5\uAC1C \uBC94\uC704\uC640
+    \uC124\uCE58 URL\uC744 \uBCC0\uACBD\uD588\uC2B5\uB2C8\uB2E4.\n- \uC0AD\uC81C\uB41C
+    Private \uC18C\uC2A4 \uB300\uC2E0 `ActionFit-Editor`\uC758 Public Content Core,
+    Time, Lava Rush, Lava Rush UI tag\uB97C \uC0AC\uC6A9\uD569\uB2C8\uB2E4.\n- bootstrap
+    Custom Package Manager\uB97C \uC2E4\uC81C \uBC30\uD3EC \uD6C4\uBCF4\uC778 `1.1.95`\uB85C
+    \uAC31\uC2E0\uD588\uC2B5\uB2C8\uB2E4.\n- \uD544\uC218 \uD328\uD0A4\uC9C0 \uAC80\uC99D,
+    \uC18C\uC720\uAD8C \uC800\uC7A5, installer self-remove\uC640 \uC0AC\uC6A9\uC790
+    \uBCC0\uACBD \uBCF4\uC874 \uB3D9\uC791\uC740 \uC720\uC9C0\uD569\uB2C8\uB2E4."
+  _dependenciesOverride: 

@@ -1,0 +1,21 @@
+{
+  "name": "com.actionfit.lava-rush.installer.Editor.Tests",
+  "rootNamespace": "ActionFit.LavaRushInstaller.Editor.Tests",
+  "references": [
+    "com.actionfit.lava-rush.installer.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
