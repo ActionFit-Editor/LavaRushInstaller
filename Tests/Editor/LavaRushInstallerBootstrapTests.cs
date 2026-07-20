@@ -40,6 +40,7 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
 
             Profile profile = JsonUtility.FromJson<Profile>(asset.text);
             Assert.That(profile.bundleId, Is.EqualTo("lava-rush"));
+            Assert.That(profile.bundleVersion, Is.EqualTo("0.1.3"));
             Assert.That(profile.bootstrapPackageId, Is.EqualTo(LavaRushInstallerBootstrap.InstallerPackageId));
             Assert.That(profile.packages.Select(package => package.packageId), Is.EquivalentTo(new[]
             {
@@ -61,13 +62,23 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(manager.removeOnRelease, Is.False);
             Assert.That(profile.packages.Single(package =>
                 package.packageId == "com.actionfit.lava-rush.ui").required, Is.True);
+            Assert.That(Version(profile, "com.actionfit.content-core"), Is.EqualTo("0.2.3"));
+            Assert.That(Version(profile, "com.actionfit.time"), Is.EqualTo("1.0.4"));
+            Assert.That(Version(profile, "com.actionfit.lava-rush"), Is.EqualTo("0.1.6"));
+            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.1.7"));
             Assert.That(profile.allowedReleaseGitHubLogins, Is.EqualTo(new[] { "JewooSong" }));
+        }
+
+        private static string Version(Profile profile, string packageId)
+        {
+            return profile.packages.Single(package => package.packageId == packageId).version;
         }
 
         [Serializable]
         private sealed class Profile
         {
             public string bundleId = "";
+            public string bundleVersion = "";
             public string bootstrapPackageId = "";
             public Package[] packages = Array.Empty<Package>();
             public string[] allowedReleaseGitHubLogins = Array.Empty<string>();

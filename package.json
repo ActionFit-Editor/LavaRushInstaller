@@ -1,8 +1,8 @@
 {
   "name": "com.actionfit.lava-rush.installer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "displayName": "ActionFit Lava Rush Installer",
-  "description": "Installs and owns the complete ActionFit Lava Rush content bundle, including its required UI package.",
+  "description": "Installs the complete ActionFit Lava Rush bundle while preserving an explicitly embedded editable UI package.",
   "unity": "6000.2",
   "author": {
     "name": "ActionFit"

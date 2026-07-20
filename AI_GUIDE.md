@@ -6,7 +6,7 @@
 - Display name: ActionFit Lava Rush Installer
 - Repository: `https://github.com/ActionFit-Editor/LavaRushInstaller.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.1.2`
+- Current package version at generation time: `0.1.3`
 - Unity version: `6000.2`
 
 ## Purpose
@@ -30,6 +30,7 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 - Preserve embedded packages, local/file dependencies, forks, branches, unparseable revisions, user changes, and equal/newer canonical tags.
 - Load `ActionFitContentBundleApi` through reflection and pass the package-shipped profile JSON to `InstallJson` or `RepairJson`.
 - The bundle profile must keep `com.actionfit.lava-rush.ui` required. Do not introduce an engine-only installation path.
+- Project visual customization is an explicit post-install `Embed for Edit` action for `com.actionfit.lava-rush.ui` only. The installer must never auto-embed packages or replace compatible embedded UI edits; an embedded version below the profile requirement remains an explicit conflict.
 - Keep the manager required with `removeOnRelease: false`; it owns reconciliation and the authorized release UI after the bootstrap self-removes.
 - Persist durable ownership only through Custom Package Manager at `ProjectSettings/ActionFitContentBundles.json`.
 - Preserve interrupted-operation journals at `UserSettings/ActionFitPackageManager/ContentBundleTransactions` until completion or verified rollback.
@@ -39,10 +40,10 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 ## Current Bundle Profile
 
 - `com.actionfit.custompackagemanager@1.1.96`
-- `com.actionfit.content-core@0.2.1`
-- `com.actionfit.time@1.0.3`
-- `com.actionfit.lava-rush@0.1.3`
-- `com.actionfit.lava-rush.ui@0.1.3`
+- `com.actionfit.content-core@0.2.3`
+- `com.actionfit.time@1.0.4`
+- `com.actionfit.lava-rush@0.1.6`
+- `com.actionfit.lava-rush.ui@0.1.7`
 - Authorized release GitHub login: `JewooSong`
 
 Every Git URL must use HTTPS and an exact version tag matching the declared version.
