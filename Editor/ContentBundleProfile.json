@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "bundleId": "lava-rush",
-  "bundleVersion": "0.1.5",
+  "bundleVersion": "0.1.6",
   "displayName": "ActionFit Lava Rush",
   "bootstrapPackageId": "com.actionfit.lava-rush.installer",
   "packages": [
     {
       "packageId": "com.actionfit.custompackagemanager",
-      "version": "1.1.112",
-      "gitUrl": "https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.112",
+      "version": "1.1.113",
+      "gitUrl": "https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.113",
       "required": true,
       "removeOnRelease": false
     },
@@ -80,7 +80,8 @@
       "version": "1.16.8",
       "gitUrl": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.16.8",
       "required": true,
-      "removeOnRelease": true
+      "removeOnRelease": true,
+      "allowCompatibleRegistryVersion": true
     }
   ],
   "allowedReleaseGitHubLogins": [

@@ -16,14 +16,14 @@ namespace ActionFit.LavaRushInstaller.Editor
     {
         internal const string InstallerPackageId = "com.actionfit.lava-rush.installer";
         internal const string ManagerPackageId = "com.actionfit.custompackagemanager";
-        internal const string ManagerVersion = "1.1.112";
+        internal const string ManagerVersion = "1.1.113";
         internal const string ManagerRepository = "https://github.com/ActionFit-Editor/Custom_Package_Manager.git";
         internal const string ManagerGitUrl = ManagerRepository + "#" + ManagerVersion;
 
         private const string ProfileAssetPath = "Packages/com.actionfit.lava-rush.installer/Editor/ContentBundleProfile.json";
         private const string ManifestRelativePath = "Packages/manifest.json";
-        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.5";
-        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.5";
+        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.6";
+        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.6";
 
         private static AddRequest _managerRequest;
 
@@ -206,12 +206,64 @@ namespace ActionFit.LavaRushInstaller.Editor
             string code = ReadStringField(type, result, "code");
             string message = ReadStringField(type, result, "message");
             string output = $"{code} - {message}";
+            string[] conflicts = DescribeConflicts(result);
+            string conflictDetails = conflicts.Length == 0
+                ? ""
+                : "\n" + string.Join("\n", conflicts.Select(conflict => $"- {conflict}"));
             if (!success)
-                Debug.LogError($"[Lava Rush Installer] {output}");
+                Debug.LogError($"[Lava Rush Installer] {output}{conflictDetails}");
             else if (pending)
                 Debug.Log($"[Lava Rush Installer] Pending: {output}");
             else
                 Debug.Log($"[Lava Rush Installer] Completed: {output}");
+        }
+
+        internal static string[] DescribeConflicts(object result)
+        {
+            if (result == null) return Array.Empty<string>();
+            object plan = result.GetType()
+                .GetField("plan", BindingFlags.Public | BindingFlags.Instance)
+                ?.GetValue(result);
+            if (plan == null) return Array.Empty<string>();
+            if (plan.GetType()
+                    .GetField("changes", BindingFlags.Public | BindingFlags.Instance)
+                    ?.GetValue(plan) is not Array changes)
+            {
+                return Array.Empty<string>();
+            }
+
+            return changes.Cast<object>()
+                .Where(change => string.Equals(
+                    change.GetType().GetField("kind", BindingFlags.Public | BindingFlags.Instance)?.GetValue(change)?.ToString(),
+                    "Conflict",
+                    StringComparison.Ordinal))
+                .Select(change =>
+                {
+                    Type changeType = change.GetType();
+                    string packageId = ReadStringField(changeType, change, "packageId");
+                    string current = FormatDependencyForLog(ReadStringField(changeType, change, "from"));
+                    string required = FormatDependencyForLog(ReadStringField(changeType, change, "to"));
+                    return $"{packageId}: {current} -> {required}";
+                })
+                .ToArray();
+        }
+
+        private static string FormatDependencyForLog(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return "(missing)";
+            if (IsVersionTag(value)) return $"registry@{value}";
+            if (value.StartsWith("file:", StringComparison.OrdinalIgnoreCase)) return "local/file dependency";
+
+            string repository = value;
+            string revision = "(floating)";
+            if (TrySplitGitUrl(value, out string pinnedRepository, out string pinnedRevision))
+            {
+                repository = pinnedRepository;
+                revision = pinnedRevision;
+            }
+
+            if (!Uri.TryCreate(repository, UriKind.Absolute, out Uri uri)) return "unparseable dependency";
+            return $"{uri.Host}{uri.AbsolutePath.TrimEnd('/')}#{revision}";
         }
 
         private static bool ReadBoolField(Type type, object owner, string name)

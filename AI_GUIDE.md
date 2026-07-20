@@ -6,7 +6,7 @@
 - Display name: ActionFit Lava Rush Installer
 - Repository: `https://github.com/ActionFit-Editor/LavaRushInstaller.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.1.5`
+- Current package version at generation time: `0.1.6`
 - Unity version: `6000.2`
 
 ## Purpose
@@ -25,10 +25,12 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 
 - `package.json` dependencies must remain empty because Git dependencies belong in the consuming project's top-level `Packages/manifest.json`.
 - The bootstrap assembly must compile without hard references to Custom Package Manager or any Lava Rush runtime/UI assembly.
-- It may bootstrap only canonical `com.actionfit.custompackagemanager@1.1.112` when the manager is missing or has an older tag from the same repository.
+- It may bootstrap only canonical `com.actionfit.custompackagemanager@1.1.113` when the manager is missing or has an older tag from the same repository.
 - ActionFit bundle packages use canonical Public `ActionFit-Editor` repositories. Production prefab effect dependencies use only the explicitly reviewed upstream repositories and immutable revisions listed below.
 - Prefer an exact SemVer tag. Only a repository with no version tag may use a full 40-character immutable commit; branches, short commits, and floating revisions are forbidden.
 - Preserve embedded packages, local/file dependencies, forks, branches, unparseable revisions, user changes, and equal/newer canonical tags.
+- Preserve an already-installed stable registry VContainer version equal to or newer than `1.16.8` through its explicit `allowCompatibleRegistryVersion` profile opt-in; no other package receives this exception.
+- Failed installation must report every conflicting package with a credential-safe current/required dependency summary instead of reporting only the conflict count.
 - Load `ActionFitContentBundleApi` through reflection and pass the package-shipped profile JSON to `InstallJson` or `RepairJson`.
 - The bundle profile must keep `com.actionfit.lava-rush.ui` required. Do not introduce an engine-only installation path.
 - Project visual customization is an explicit post-install `Embed for Edit` action for `com.actionfit.lava-rush.ui` only. The installer must never auto-embed packages or replace compatible embedded UI edits; an embedded version below the profile requirement remains an explicit conflict.
@@ -40,7 +42,7 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 
 ## Current Bundle Profile
 
-- `com.actionfit.custompackagemanager@1.1.112`
+- `com.actionfit.custompackagemanager@1.1.113`
 - `com.actionfit.content-core@0.2.3`
 - `com.actionfit.time@1.0.4`
 - `com.actionfit.lava-rush@0.1.6`

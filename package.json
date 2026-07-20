@@ -1,6 +1,6 @@
 {
   "name": "com.actionfit.lava-rush.installer",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "displayName": "ActionFit Lava Rush Installer",
   "description": "Installs the complete ActionFit Lava Rush bundle while preserving an explicitly embedded editable UI package.",
   "unity": "6000.2",
