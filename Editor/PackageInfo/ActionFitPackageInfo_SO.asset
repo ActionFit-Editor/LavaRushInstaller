@@ -21,13 +21,10 @@ MonoBehaviour:
   _description: Installs the complete Lava Rush engine and authored UI bundle from
     one public Git URL, preserves explicitly embedded UI edits, then self-removes
     after verified registration.
-  _releaseNote: "- VContainer stable registry 1.16.8 \uC774\uC0C1\uC774 \uC774\uBBF8
-    \uC124\uCE58\uB41C \uD504\uB85C\uC81D\uD2B8\uC5D0\uC11C \uCD9C\uCC98 \uCDA9\uB3CC\uB85C
-    bundle \uC124\uCE58\uAC00 \uBA48\uCD94\uB358 \uBB38\uC81C\uB97C \uD574\uACB0\uD588\uC2B5\uB2C8\uB2E4.\n-
-    Custom Package Manager 1.1.113\uC744 \uC0AC\uC6A9\uD574 \uD574\uB2F9 registry
-    \uBC84\uC804\uC744 \uADF8\uB300\uB85C \uBCF4\uC874\uD569\uB2C8\uB2E4.\n- \uC124\uCE58
-    \uCDA9\uB3CC \uC2DC \uD328\uD0A4\uC9C0 ID\uC640 credential-safe \uD604\uC7AC/\uC694\uAD6C
-    dependency \uC694\uC57D\uC744 Console\uC5D0 \uD45C\uC2DC\uD569\uB2C8\uB2E4.\n-
-    floating Git, fork, local/file, \uB0AE\uC740 registry \uBC84\uC804\uC740 \uC790\uB3D9
-    \uB36E\uC5B4\uC4F0\uC9C0 \uC54A\uACE0 \uACC4\uC18D \uCDA9\uB3CC\uB85C \uBCF4\uACE0\uD569\uB2C8\uB2E4."
+  _releaseNote: "- TimeServer \uBAA8\uB4DC\uC5D0 \uB9DE\uB294 \uC694\uC77C \uBC0F
+    \uC790\uC815 \uAE30\uC900\uC744 \uC81C\uACF5\uD558\uB294 Lava Rush \uC5D4\uC9C4
+    0.1.7\uC744 \uACE0\uC815\uD569\uB2C8\uB2E4.\n- \uB514\uBC14\uC774\uC2A4 \uB85C\uCEEC
+    \uAE30\uC900\uC744 \uC801\uC6A9\uD55C Lava Rush UI 0.1.11\uC744 \uACE0\uC815\uD569\uB2C8\uB2E4.\n-
+    \uAE30\uC874 \uC6D0\uBCF8 UI \uB9AC\uC18C\uC2A4, embedded \uBCF4\uC874\uACFC
+    \uC124\uCE58 \uCDA9\uB3CC \uC9C4\uB2E8 \uACC4\uC57D\uC740 \uC720\uC9C0\uD569\uB2C8\uB2E4."
   _dependenciesOverride: 

@@ -22,8 +22,8 @@ namespace ActionFit.LavaRushInstaller.Editor
 
         private const string ProfileAssetPath = "Packages/com.actionfit.lava-rush.installer/Editor/ContentBundleProfile.json";
         private const string ManifestRelativePath = "Packages/manifest.json";
-        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.6";
-        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.6";
+        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.8";
+        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.8";
 
         private static AddRequest _managerRequest;
 
@@ -47,6 +47,17 @@ namespace ActionFit.LavaRushInstaller.Editor
                 return;
             }
 
+            ManagerDependencyDisposition disposition = ClassifyManagerDependency(
+                ReadManifestDependency(ManagerPackageId),
+                ReadEmbeddedPackageVersion(ManagerPackageId));
+            if (disposition != ManagerDependencyDisposition.Exact &&
+                disposition != ManagerDependencyDisposition.PreserveNewerCanonical &&
+                disposition != ManagerDependencyDisposition.EmbeddedCompatible)
+            {
+                EnsureManagerAvailable();
+                return;
+            }
+
             Type apiType = FindManagerApiType();
             if (apiType == null)
             {
@@ -55,6 +66,14 @@ namespace ActionFit.LavaRushInstaller.Editor
                     SessionState.SetBool(ManagerRequestSessionKey, false);
                     SessionState.SetBool(ManagerResolveSessionKey, false);
                 }
+                EnsureManagerAvailable();
+                return;
+            }
+
+            string loadedManagerVersion = ReadManagerApiPackageVersion(apiType);
+            if (!IsManagerApiVersionCompatible(loadedManagerVersion))
+            {
+                Debug.Log($"[Lava Rush Installer] Waiting for loaded {ManagerPackageId} API {ManagerVersion} or newer; current loaded version is {loadedManagerVersion}.");
                 EnsureManagerAvailable();
                 return;
             }
@@ -114,6 +133,11 @@ namespace ActionFit.LavaRushInstaller.Editor
             return CompareVersions(revision, ManagerVersion) < 0
                 ? ManagerDependencyDisposition.UpgradeCanonical
                 : ManagerDependencyDisposition.PreserveNewerCanonical;
+        }
+
+        internal static bool IsManagerApiVersionCompatible(string loadedVersion)
+        {
+            return IsVersionTag(loadedVersion) && CompareVersions(loadedVersion, ManagerVersion) >= 0;
         }
 
         private static void AutoInstall()
@@ -190,6 +214,18 @@ namespace ActionFit.LavaRushInstaller.Editor
             return AppDomain.CurrentDomain.GetAssemblies()
                 .Select(assembly => assembly.GetType("ActionFitContentBundleApi", false))
                 .FirstOrDefault(type => type != null);
+        }
+
+        private static string ReadManagerApiPackageVersion(Type apiType)
+        {
+            try
+            {
+                return UnityEditor.PackageManager.PackageInfo.FindForAssembly(apiType.Assembly)?.version ?? "";
+            }
+            catch
+            {
+                return "";
+            }
         }
 
         private static void ReportResult(object result)
