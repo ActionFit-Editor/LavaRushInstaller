@@ -6,7 +6,7 @@
 - Display name: ActionFit Lava Rush Installer
 - Repository: `https://github.com/ActionFit-Editor/LavaRushInstaller.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.1.3`
+- Current package version at generation time: `0.1.4`
 - Unity version: `6000.2`
 
 ## Purpose
@@ -43,7 +43,7 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 - `com.actionfit.content-core@0.2.3`
 - `com.actionfit.time@1.0.4`
 - `com.actionfit.lava-rush@0.1.6`
-- `com.actionfit.lava-rush.ui@0.1.7`
+- `com.actionfit.lava-rush.ui@0.1.8`
 - Authorized release GitHub login: `JewooSong`
 
 Every Git URL must use HTTPS and an exact version tag matching the declared version.

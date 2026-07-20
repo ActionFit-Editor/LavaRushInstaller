@@ -21,11 +21,10 @@ MonoBehaviour:
   _description: Installs the complete Lava Rush engine and authored UI bundle from
     one public Git URL, preserves explicitly embedded UI edits, then self-removes
     after verified registration.
-  _releaseNote: "- Content Core 0.2.3, Time 1.0.4, Lava Rush 0.1.6, Lava Rush UI
-    0.1.7\uB85C bundle pin\uC744 \uAC31\uC2E0\uD588\uC2B5\uB2C8\uB2E4.\n- \uC124\uCE58
-    \uD6C4 UI \uD328\uD0A4\uC9C0\uB9CC Embed for Edit\uD558\uB294 \uD504\uB85C\uC81D\uD2B8\uBCC4
-    \uD3B8\uC9D1 \uC808\uCC28\uB97C \uCD94\uAC00\uD588\uC2B5\uB2C8\uB2E4.\n- \uD638\uD658\uB418\uB294
-    embedded UI\uB294 \uBCF4\uC874\uD558\uACE0 \uC624\uB798\uB41C embedded UI\uB294
-    \uB36E\uC5B4\uC4F0\uC9C0 \uC54A\uACE0 \uCDA9\uB3CC\uB85C \uBCF4\uACE0\uD558\uB294
-    \uAE30\uC874 manager \uACC4\uC57D\uC744 \uBA85\uC2DC\uD588\uC2B5\uB2C8\uB2E4."
+  _releaseNote: "- Lava Rush UI 0.1.8\uC758 14\uAC1C \uC5ED\uD560 \uD504\uB9AC\uD339\uACFC
+    package-owned image \uC138\uD2B8\uB97C \uD544\uC218 bundle pin\uC73C\uB85C \uAC31\uC2E0\uD588\uC2B5\uB2C8\uB2E4.\n-
+    \uC124\uCE58 \uD6C4 UI \uD328\uD0A4\uC9C0\uB9CC Embed for Edit\uD558\uB294 \uD504\uB85C\uC81D\uD2B8\uBCC4
+    \uD3B8\uC9D1 \uACBD\uACC4\uC640 embedded \uBCF4\uC874 \uB3D9\uC791\uC744 \uC720\uC9C0\uD588\uC2B5\uB2C8\uB2E4.\n-
+    \uC624\uB798\uB41C embedded UI\uB294 \uB36E\uC5B4\uC4F0\uC9C0 \uC54A\uACE0 \uCDA9\uB3CC\uB85C
+    \uBCF4\uACE0\uD558\uB294 installer \uACC4\uC57D\uC744 \uAC80\uC99D\uD588\uC2B5\uB2C8\uB2E4."
   _dependenciesOverride: 

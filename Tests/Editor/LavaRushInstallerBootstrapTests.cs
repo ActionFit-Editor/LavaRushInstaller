@@ -40,7 +40,7 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
 
             Profile profile = JsonUtility.FromJson<Profile>(asset.text);
             Assert.That(profile.bundleId, Is.EqualTo("lava-rush"));
-            Assert.That(profile.bundleVersion, Is.EqualTo("0.1.3"));
+            Assert.That(profile.bundleVersion, Is.EqualTo("0.1.4"));
             Assert.That(profile.bootstrapPackageId, Is.EqualTo(LavaRushInstallerBootstrap.InstallerPackageId));
             Assert.That(profile.packages.Select(package => package.packageId), Is.EquivalentTo(new[]
             {
@@ -65,7 +65,7 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(Version(profile, "com.actionfit.content-core"), Is.EqualTo("0.2.3"));
             Assert.That(Version(profile, "com.actionfit.time"), Is.EqualTo("1.0.4"));
             Assert.That(Version(profile, "com.actionfit.lava-rush"), Is.EqualTo("0.1.6"));
-            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.1.7"));
+            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.1.8"));
             Assert.That(profile.allowedReleaseGitHubLogins, Is.EqualTo(new[] { "JewooSong" }));
         }
 
