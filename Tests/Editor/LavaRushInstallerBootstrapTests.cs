@@ -10,10 +10,10 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
     public sealed class LavaRushInstallerBootstrapTests
     {
         [TestCase("", "Missing")]
-        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.96", "Exact")]
-        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.94", "UpgradeCanonical")]
+        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.112", "Exact")]
+        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.111", "UpgradeCanonical")]
         [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.2.0", "PreserveNewerCanonical")]
-        [TestCase("https://github.com/SomeoneElse/Custom_Package_Manager.git#1.1.96", "Conflict")]
+        [TestCase("https://github.com/SomeoneElse/Custom_Package_Manager.git#1.1.112", "Conflict")]
         [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#main", "Conflict")]
         [TestCase("file:com.actionfit.custompackagemanager", "Conflict")]
         public void ClassifyManagerDependency_PreservesUnsafeValuesAndUpgradesOnlyCanonicalOlderTag(
@@ -23,9 +23,9 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(LavaRushInstallerBootstrap.ClassifyManagerDependency(currentValue, "").ToString(), Is.EqualTo(expected));
         }
 
-        [TestCase("1.1.96", "EmbeddedCompatible")]
+        [TestCase("1.1.112", "EmbeddedCompatible")]
         [TestCase("1.2.0", "EmbeddedCompatible")]
-        [TestCase("1.1.94", "EmbeddedTooOld")]
+        [TestCase("1.1.111", "EmbeddedTooOld")]
         public void ClassifyManagerDependency_PreservesEmbeddedPackage(string version, string expected)
         {
             Assert.That(LavaRushInstallerBootstrap.ClassifyManagerDependency("", version).ToString(), Is.EqualTo(expected));
@@ -40,7 +40,7 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
 
             Profile profile = JsonUtility.FromJson<Profile>(asset.text);
             Assert.That(profile.bundleId, Is.EqualTo("lava-rush"));
-            Assert.That(profile.bundleVersion, Is.EqualTo("0.1.4"));
+            Assert.That(profile.bundleVersion, Is.EqualTo("0.1.5"));
             Assert.That(profile.bootstrapPackageId, Is.EqualTo(LavaRushInstallerBootstrap.InstallerPackageId));
             Assert.That(profile.packages.Select(package => package.packageId), Is.EquivalentTo(new[]
             {
@@ -48,13 +48,27 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
                 "com.actionfit.content-core",
                 "com.actionfit.time",
                 "com.actionfit.lava-rush",
+                "com.actionfit.ui.foundation",
                 "com.actionfit.lava-rush.ui",
+                "com.coffee.ui-effect",
+                "com.coffee.ui-particle",
+                "com.coffee.softmask-for-ugui",
+                "com.actionfit.uilighteffector",
+                "jp.hadashikick.vcontainer",
             }));
             Assert.That(profile.packages.All(package => package.required), Is.True);
             Assert.That(profile.packages.All(package =>
-                package.gitUrl.StartsWith("https://github.com/ActionFit-Editor/", StringComparison.Ordinal)), Is.True);
-            Assert.That(profile.packages.All(package =>
-                package.gitUrl.EndsWith("#" + package.version, StringComparison.Ordinal)), Is.True);
+                package.gitUrl.StartsWith("https://github.com/", StringComparison.Ordinal)), Is.True);
+            Assert.That(profile.packages.Single(package => package.packageId == "com.coffee.ui-effect").gitUrl,
+                Is.EqualTo("https://github.com/mob-sakai/UIEffect.git?path=Packages/src#5.10.8"));
+            Assert.That(profile.packages.Single(package => package.packageId == "com.coffee.ui-particle").gitUrl,
+                Is.EqualTo("https://github.com/mob-sakai/ParticleEffectForUGUI.git#4.12.1"));
+            Assert.That(profile.packages.Single(package => package.packageId == "com.coffee.softmask-for-ugui").gitUrl,
+                Is.EqualTo("https://github.com/mob-sakai/SoftMaskForUGUI.git?path=Packages/src#3.5.0"));
+            Assert.That(profile.packages.Single(package => package.packageId == "com.actionfit.uilighteffector").gitUrl,
+                Is.EqualTo("https://github.com/HuiSungz/UILightingEffect-ReShade.git#7dab46ec2378209bd1e524c8336b976eccb3df05"));
+            Assert.That(profile.packages.Single(package => package.packageId == "jp.hadashikick.vcontainer").gitUrl,
+                Is.EqualTo("https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.16.8"));
             Package manager = profile.packages.Single(package =>
                 package.packageId == "com.actionfit.custompackagemanager");
             Assert.That(manager.version, Is.EqualTo(LavaRushInstallerBootstrap.ManagerVersion));
@@ -65,7 +79,13 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(Version(profile, "com.actionfit.content-core"), Is.EqualTo("0.2.3"));
             Assert.That(Version(profile, "com.actionfit.time"), Is.EqualTo("1.0.4"));
             Assert.That(Version(profile, "com.actionfit.lava-rush"), Is.EqualTo("0.1.6"));
-            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.1.8"));
+            Assert.That(Version(profile, "com.actionfit.ui.foundation"), Is.EqualTo("2.0.0"));
+            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.1.9"));
+            Assert.That(Version(profile, "com.coffee.ui-effect"), Is.EqualTo("5.10.8"));
+            Assert.That(Version(profile, "com.coffee.ui-particle"), Is.EqualTo("4.12.1"));
+            Assert.That(Version(profile, "com.coffee.softmask-for-ugui"), Is.EqualTo("3.5.0"));
+            Assert.That(Version(profile, "com.actionfit.uilighteffector"), Is.EqualTo("1.0.0"));
+            Assert.That(Version(profile, "jp.hadashikick.vcontainer"), Is.EqualTo("1.16.8"));
             Assert.That(profile.allowedReleaseGitHubLogins, Is.EqualTo(new[] { "JewooSong" }));
         }
 

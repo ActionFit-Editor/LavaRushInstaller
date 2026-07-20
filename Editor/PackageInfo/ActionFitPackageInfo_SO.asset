@@ -21,10 +21,12 @@ MonoBehaviour:
   _description: Installs the complete Lava Rush engine and authored UI bundle from
     one public Git URL, preserves explicitly embedded UI edits, then self-removes
     after verified registration.
-  _releaseNote: "- Lava Rush UI 0.1.8\uC758 14\uAC1C \uC5ED\uD560 \uD504\uB9AC\uD339\uACFC
-    package-owned image \uC138\uD2B8\uB97C \uD544\uC218 bundle pin\uC73C\uB85C \uAC31\uC2E0\uD588\uC2B5\uB2C8\uB2E4.\n-
-    \uC124\uCE58 \uD6C4 UI \uD328\uD0A4\uC9C0\uB9CC Embed for Edit\uD558\uB294 \uD504\uB85C\uC81D\uD2B8\uBCC4
-    \uD3B8\uC9D1 \uACBD\uACC4\uC640 embedded \uBCF4\uC874 \uB3D9\uC791\uC744 \uC720\uC9C0\uD588\uC2B5\uB2C8\uB2E4.\n-
-    \uC624\uB798\uB41C embedded UI\uB294 \uB36E\uC5B4\uC4F0\uC9C0 \uC54A\uACE0 \uCDA9\uB3CC\uB85C
-    \uBCF4\uACE0\uD558\uB294 installer \uACC4\uC57D\uC744 \uAC80\uC99D\uD588\uC2B5\uB2C8\uB2E4."
+  _releaseNote: "- \uC6D0\uBCF8 \uD504\uB9AC\uD339 14\uAC1C\uC640 PNG 56\uAC1C\uB97C
+    \uD3EC\uD568\uD55C Lava Rush UI 0.1.9\uB97C \uD544\uC218 bundle pin\uC73C\uB85C
+    \uAC31\uC2E0\uD588\uC2B5\uB2C8\uB2E4.\n- \uC6D0\uBCF8 UI_Text/UI_Button \uBC0F
+    UIEffect, UIParticle, SoftMask, UILighting \uCEF4\uD3EC\uB10C\uD2B8\uAC00 \uBE60\uC9D0\uC5C6\uC774
+    \uB3D9\uC791\uD558\uB3C4\uB85D \uC815\uD655\uD55C \uC2DC\uAC01 \uC758\uC874\uC131\uC744
+    \uCD94\uAC00\uD588\uC2B5\uB2C8\uB2E4.\n- \uC124\uCE58 \uD6C4 UI \uD328\uD0A4\uC9C0\uB9CC
+    Embed for Edit\uD558\uB294 \uD3B8\uC9D1 \uACBD\uACC4\uC640 embedded \uBCF4\uC874
+    \uB3D9\uC791\uC744 \uC720\uC9C0\uD588\uC2B5\uB2C8\uB2E4."
   _dependenciesOverride: 

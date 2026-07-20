@@ -6,12 +6,12 @@
 - Display name: ActionFit Lava Rush Installer
 - Repository: `https://github.com/ActionFit-Editor/LavaRushInstaller.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.1.4`
+- Current package version at generation time: `0.1.5`
 - Unity version: `6000.2`
 
 ## Purpose
 
-This public bootstrap package installs the complete Lava Rush content bundle from one Git URL. `com.actionfit.lava-rush.ui` is mandatory, not optional. After the manager verifies every required package and persists ownership state, the bootstrap dependency removes itself from the consuming project manifest.
+This public bootstrap package installs the complete Lava Rush content bundle from one Git URL. `com.actionfit.lava-rush.ui`, UI Foundation, the four visual-effect packages referenced by the original prefabs, and UILighting's VContainer runtime dependency are mandatory, not optional. UI `0.1.9` supplies the original production prefab/image baseline without AI-generated or substituted visual resources. After the manager verifies every required package and persists ownership state, the bootstrap dependency removes itself from the consuming project manifest.
 
 ## Project Router Registration
 
@@ -25,8 +25,9 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 
 - `package.json` dependencies must remain empty because Git dependencies belong in the consuming project's top-level `Packages/manifest.json`.
 - The bootstrap assembly must compile without hard references to Custom Package Manager or any Lava Rush runtime/UI assembly.
-- It may bootstrap only canonical `com.actionfit.custompackagemanager@1.1.96` when the manager is missing or has an older tag from the same repository.
-- Every bundle Git URL must use the canonical Public `ActionFit-Editor` repository and an exact version tag.
+- It may bootstrap only canonical `com.actionfit.custompackagemanager@1.1.112` when the manager is missing or has an older tag from the same repository.
+- ActionFit bundle packages use canonical Public `ActionFit-Editor` repositories. Production prefab effect dependencies use only the explicitly reviewed upstream repositories and immutable revisions listed below.
+- Prefer an exact SemVer tag. Only a repository with no version tag may use a full 40-character immutable commit; branches, short commits, and floating revisions are forbidden.
 - Preserve embedded packages, local/file dependencies, forks, branches, unparseable revisions, user changes, and equal/newer canonical tags.
 - Load `ActionFitContentBundleApi` through reflection and pass the package-shipped profile JSON to `InstallJson` or `RepairJson`.
 - The bundle profile must keep `com.actionfit.lava-rush.ui` required. Do not introduce an engine-only installation path.
@@ -39,14 +40,20 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 
 ## Current Bundle Profile
 
-- `com.actionfit.custompackagemanager@1.1.96`
+- `com.actionfit.custompackagemanager@1.1.112`
 - `com.actionfit.content-core@0.2.3`
 - `com.actionfit.time@1.0.4`
 - `com.actionfit.lava-rush@0.1.6`
-- `com.actionfit.lava-rush.ui@0.1.8`
+- `com.actionfit.ui.foundation@2.0.0`
+- `com.actionfit.lava-rush.ui@0.1.9`
+- `com.coffee.ui-effect@5.10.8` — `mob-sakai/UIEffect`, `Packages/src`
+- `com.coffee.ui-particle@4.12.1` — `mob-sakai/ParticleEffectForUGUI`
+- `com.coffee.softmask-for-ugui@3.5.0` — `mob-sakai/SoftMaskForUGUI`, `Packages/src`
+- `com.actionfit.uilighteffector@1.0.0` — `HuiSungz/UILightingEffect-ReShade` full commit `7dab46ec2378209bd1e524c8336b976eccb3df05`
+- `jp.hadashikick.vcontainer@1.16.8` — `hadashiA/VContainer`, `VContainer/Assets/VContainer`
 - Authorized release GitHub login: `JewooSong`
 
-Every Git URL must use HTTPS and an exact version tag matching the declared version.
+Every Git URL must use HTTPS and an immutable revision. Do not strip an original prefab effect component to reduce this dependency set; changing or removing one requires an explicit visual-parity decision.
 
 ## Release Note Rules
 
