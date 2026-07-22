@@ -22,8 +22,8 @@ namespace ActionFit.LavaRushInstaller.Editor
 
         private const string ProfileAssetPath = "Packages/com.actionfit.lava-rush.installer/Editor/ContentBundleProfile.json";
         private const string ManifestRelativePath = "Packages/manifest.json";
-        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.13";
-        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.13";
+        private const string ManagerRequestSessionKey = "ActionFit.LavaRushInstaller.ManagerRequest.0.1.15";
+        private const string ManagerResolveSessionKey = "ActionFit.LavaRushInstaller.ManagerResolve.0.1.15";
 
         private static AddRequest _managerRequest;
 

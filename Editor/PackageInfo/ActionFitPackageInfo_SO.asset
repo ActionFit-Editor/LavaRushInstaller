@@ -21,13 +21,12 @@ MonoBehaviour:
   _description: Installs the complete Lava Rush engine and authored UI bundle from
     one public Git URL, preserves explicitly embedded UI edits, then self-removes
     after verified registration.
-  _releaseNote: "- Cell\uC758 \uB204\uB77D\uB41C UI_Text Localization\xB7Outline
-    \uC778\uC2A4\uD399\uD130 \uAC12\uACFC \uC911\uBCF5 \uB85C\uCEEC\uB77C\uC774\uC9D5\uC744
-    \uC218\uC815\uD55C Lava Rush UI 0.1.19\uB97C \uACE0\uC815\uD569\uB2C8\uB2E4.\n-
-    Cat Merge Difficulty\uAC00 \uD328\uD0A4\uC9C0 \uC6D0\uBCF8 Popup_textboard.png\uB97C
-    \uC0AC\uC6A9\uD558\uB294 \uAC80\uC99D\uB41C UI \uAD6C\uC131\uC744 \uC124\uCE58\uD569\uB2C8\uB2E4.\n-
-    bundle profile\uACFC bootstrap session key\uB97C installer 0.1.13\uC73C\uB85C
-    \uB3D9\uAE30\uD654\uD588\uC2B5\uB2C8\uB2E4.\n- \uC6D0\uBCF8 14\uAC1C \uD504\uB9AC\uD339\xB756\uAC1C
-    PNG, embedded UI \uBCF4\uC874, \uCDA9\uB3CC \uC9C4\uB2E8\uACFC self-removal \uACC4\uC57D\uC740
-    \uC720\uC9C0\uD569\uB2C8\uB2E4."
+  _releaseNote: "- package-owned nested source\uC640 \uD0C0\uC774\uD2C0 TMP \uD6A8\uACFC\uB97C
+    \uBCF5\uAD6C\uD55C Lava Rush UI 0.1.21\uC744 \uD544\uC218 \uBC84\uC804\uC73C\uB85C
+    \uACE0\uC815\uD569\uB2C8\uB2E4.\n- Img_Title Variant\uB294 \uAE30\uC874 GUID\uC640
+    Match \uBC14\uC778\uB529\uC744 \uC720\uC9C0\uD558\uBA74\uC11C Outline, Underlay,
+    Localization\uACFC \uD3F0\uD2B8 \uBA38\uD2F0\uB9AC\uC5BC\uC744 \uBCF4\uC874\uD569\uB2C8\uB2E4.\n-
+    bundle profile\uACFC bootstrap session key\uB97C installer 0.1.15\uB85C \uB3D9\uAE30\uD654\uD588\uC2B5\uB2C8\uB2E4.\n-
+    \uC6D0\uBCF8 14\uAC1C \uD504\uB9AC\uD339\xB756\uAC1C PNG, embedded UI \uBCF4\uC874,
+    \uCDA9\uB3CC \uC9C4\uB2E8\uACFC self-removal \uACC4\uC57D\uC740 \uC720\uC9C0\uD569\uB2C8\uB2E4."
   _dependenciesOverride: 
