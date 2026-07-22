@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "lava-rush",
-  "bundleVersion": "0.1.15",
+  "bundleVersion": "0.1.16",
   "displayName": "ActionFit Lava Rush",
   "bootstrapPackageId": "com.actionfit.lava-rush.installer",
   "packages": [
@@ -28,8 +28,8 @@
     },
     {
       "packageId": "com.actionfit.lava-rush",
-      "version": "0.1.9",
-      "gitUrl": "https://github.com/ActionFit-Editor/LavaRush.git#0.1.9",
+      "version": "0.1.10",
+      "gitUrl": "https://github.com/ActionFit-Editor/LavaRush.git#0.1.10",
       "required": true,
       "removeOnRelease": true
     },
@@ -41,9 +41,16 @@
       "removeOnRelease": true
     },
     {
+      "packageId": "com.actionfit.ui.popup",
+      "version": "0.1.1",
+      "gitUrl": "https://github.com/ActionFit-Editor/UI_Popup.git#0.1.1",
+      "required": true,
+      "removeOnRelease": true
+    },
+    {
       "packageId": "com.actionfit.lava-rush.ui",
-      "version": "0.1.21",
-      "gitUrl": "https://github.com/ActionFit-Editor/LavaRushUI.git#0.1.21",
+      "version": "0.1.23",
+      "gitUrl": "https://github.com/ActionFit-Editor/LavaRushUI.git#0.1.23",
       "required": true,
       "removeOnRelease": true
     },

@@ -6,12 +6,12 @@
 - Display name: ActionFit Lava Rush Installer
 - Repository: `https://github.com/ActionFit-Editor/LavaRushInstaller.git`
 - Repository visibility: Public
-- Current package version at generation time: `0.1.15`
+- Current package version at generation time: `0.1.16`
 - Unity version: `6000.2`
 
 ## Purpose
 
-This public bootstrap package installs the complete Lava Rush content bundle from one Git URL. `com.actionfit.lava-rush.ui`, UI Foundation, the four visual-effect packages referenced by the original prefabs, and UILighting's VContainer runtime dependency are mandatory, not optional. UI `0.1.21` supplies the original production prefab/image baseline, package-owned nested title sources, restored title material/Localization/Outline/Underlay, complete Icon/Cell `UI_Text` Inspector settings without duplicate localization components, the Cell `ScalePulse` Indicator, package-owned Views, ReferenceBinding contract, complete TMP shader includes, and the exact engine `0.1.9` dependency without AI-generated or substituted visual resources. It also classifies full-screen DP captures as design previews and blocks production prefab references to them. After the manager verifies every required package and persists ownership state, the bootstrap dependency removes itself from the consuming project manifest.
+This public bootstrap package installs the complete Lava Rush content bundle from one Git URL. `com.actionfit.lava-rush.ui`, UI Foundation, UI Popup, the four visual-effect packages referenced by the original prefabs, and UILighting's VContainer runtime dependency are mandatory. UI `0.1.23` supplies the single-owner original production prefab/image baseline, engine-backed canonical Main, one-slot popup flow owner, standalone completion evidence, ReferenceBinding contract, complete TMP shader includes, and exact engine `0.1.10` dependency without generated or substituted visual resources. After the manager verifies every required package and persists ownership state, the bootstrap dependency removes itself from the consuming project manifest.
 
 ## Project Router Registration
 
@@ -31,7 +31,7 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 - Prefer an exact SemVer tag. Only a repository with no version tag may use a full 40-character immutable commit; branches, short commits, and floating revisions are forbidden.
 - Preserve embedded packages, local/file dependencies, forks, branches, unparseable revisions, user changes, and equal/newer canonical tags.
 - Preserve an already-installed stable registry VContainer version equal to or newer than `1.16.8` through its explicit `allowCompatibleRegistryVersion` profile opt-in; no other package receives this exception.
-- Install `com.actionfit.lava-rush.ui@0.1.21` or newer so the production baseline, restored package-owned title prefab links and UI Foundation Inspector values, DP-preview exclusion, package-owned Views, ReferenceBinding fields, complete `TMPro*.cginc` set, and canonical CSV engine boundary remain one verified release graph.
+- Install `com.actionfit.lava-rush.ui@0.1.23` or newer with `com.actionfit.ui.popup@0.1.1` so the single-owner production baseline, canonical Main, whole-flow queue owner, ReferenceBinding fields, complete `TMPro*.cginc` set, and engine-backed completion evidence remain one verified release graph.
 - A consuming project with different project-owned global `UI_*` sources must preserve those sources and use the documented project-local UI Foundation isolation (`Embed for Edit` plus Runtime `autoReferenced: false`). Never delete or migrate project scripts automatically from the installer.
 - Failed installation must report every conflicting package with a credential-safe current/required dependency summary instead of reporting only the conflict count.
 - Load `ActionFitContentBundleApi` through reflection and pass the package-shipped profile JSON to `InstallJson` or `RepairJson`.
@@ -48,9 +48,10 @@ Read this file when changing the installer bootstrap, `Editor/ContentBundleProfi
 - `com.actionfit.custompackagemanager@1.1.113`
 - `com.actionfit.content-core@0.2.3`
 - `com.actionfit.time@1.0.4`
-- `com.actionfit.lava-rush@0.1.9`
+- `com.actionfit.lava-rush@0.1.10`
 - `com.actionfit.ui.foundation@2.0.4`
-- `com.actionfit.lava-rush.ui@0.1.21`
+- `com.actionfit.ui.popup@0.1.1`
+- `com.actionfit.lava-rush.ui@0.1.23`
 - `com.coffee.ui-effect@5.10.8` — `mob-sakai/UIEffect`, `Packages/src`
 - `com.coffee.ui-particle@4.12.1` — `mob-sakai/ParticleEffectForUGUI`
 - `com.coffee.softmask-for-ugui@3.5.0` — `mob-sakai/SoftMaskForUGUI`, `Packages/src`
