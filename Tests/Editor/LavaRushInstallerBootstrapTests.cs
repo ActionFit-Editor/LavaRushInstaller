@@ -51,7 +51,7 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
 
             Profile profile = JsonUtility.FromJson<Profile>(asset.text);
             Assert.That(profile.bundleId, Is.EqualTo("lava-rush"));
-            Assert.That(profile.bundleVersion, Is.EqualTo("0.2.0"));
+            Assert.That(profile.bundleVersion, Is.EqualTo("0.2.1"));
             Assert.That(profile.bootstrapPackageId, Is.EqualTo(LavaRushInstallerBootstrap.InstallerPackageId));
             Assert.That(profile.packages.Select(package => package.packageId), Is.EquivalentTo(new[]
             {
@@ -100,11 +100,11 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(Version(profile, "com.actionfit.content-core"), Is.EqualTo("0.2.3"));
             Assert.That(Version(profile, "com.actionfit.time"), Is.EqualTo("1.0.4"));
             Assert.That(Version(profile, "com.actionfit.lava-rush"), Is.EqualTo("0.1.11"));
-            Assert.That(Version(profile, "com.actionfit.referencebinding"), Is.EqualTo("0.2.1"));
+            Assert.That(Version(profile, "com.actionfit.referencebinding"), Is.EqualTo("0.2.2"));
             Assert.That(Version(profile, "com.actionfit.ui.foundation"), Is.EqualTo("2.0.5"));
-            Assert.That(Version(profile, "com.actionfit.ui.popup"), Is.EqualTo("0.1.1"));
-            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.2.0"));
-            Assert.That(Version(profile, "com.actionfit.cat.app"), Is.EqualTo("0.2.0"));
+            Assert.That(Version(profile, "com.actionfit.ui.popup"), Is.EqualTo("0.1.2"));
+            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.2.4"));
+            Assert.That(Version(profile, "com.actionfit.cat.app"), Is.EqualTo("0.2.2"));
             Assert.That(Version(profile, "com.coffee.ui-effect"), Is.EqualTo("5.10.8"));
             Assert.That(Version(profile, "com.coffee.ui-particle"), Is.EqualTo("4.12.1"));
             Assert.That(Version(profile, "com.coffee.softmask-for-ugui"), Is.EqualTo("3.5.0"));

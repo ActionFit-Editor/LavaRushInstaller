@@ -21,16 +21,10 @@ MonoBehaviour:
   _description: "\uD558\uB098\uC758 Public Git URL\uB85C Lava Rush engine, direct
     UI controller, Cat \uC81C\uD488 \uC870\uD569\uACFC immutable visual dependency\uB97C
     \uC124\uCE58\uD558\uACE0 \uAC80\uC99D \uD6C4 self-remove\uD569\uB2C8\uB2E4."
-  _releaseNote: "- `com.actionfit.lava-rush.ui@0.2.0`\uACFC `com.actionfit.cat.app@0.2.0`\uC744
-    \uD544\uC218\uB85C \uD3EC\uD568\uD558\uB294 breaking bundle graph\uB97C \uC900\uBE44\uD588\uC2B5\uB2C8\uB2E4.\n-
-    engine `0.1.11`, ReferenceBinding `0.2.1`, UI Foundation `2.0.5`, Custom Package
-    Manager `1.1.114`\uC640 \uBAA8\uB4E0 immutable visual dependency\uB97C \uC815\uD655\uD788
-    \uACE0\uC815\uD588\uC2B5\uB2C8\uB2E4.\n- Addressables \uB4F1\uB85D\uC740 bundle
-    \uC124\uCE58\uC640 \uBD84\uB9AC\uB418\uBA70 \uC124\uCE58 \uD6C4 Cat App\uC758
-    read-only preview\uC640 \uBCC4\uB3C4 \uD655\uC778\uD615 create-only \uBA54\uB274\uC5D0\uC11C\uB9CC
-    \uC218\uD589\uB429\uB2C8\uB2E4.\n- \uD638\uD658\uB418\uB294 embedded UI\uC640
-    \uC0AC\uC6A9\uC790 package \uAC12, ownership journal, shared dependency, self-removal
-    \uBC0F rollback \uACC4\uC57D\uC744 \uC720\uC9C0\uD569\uB2C8\uB2E4.\n- Caution:
-    theme\uC740 optional\uC774\uACE0 publication, Git push/tag, catalog append\uC640
-    deployment\uB294 \uD3EC\uD568\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
-  _dependenciesOverride: 
+  _releaseNote: "- bundle graph\uB97C `com.actionfit.referencebinding@0.2.2`, `com.actionfit.ui.popup@0.1.2`,
+    `com.actionfit.lava-rush.ui@0.2.4`, `com.actionfit.cat.app@0.2.2`\uB85C \uC815\uB82C\uD588\uC2B5\uB2C8\uB2E4.\n-
+    \uBC30\uACBD \uBB3C\uB9AC \uC785\uB825 \uCC28\uB2E8\uACFC package-owned Editor
+    pump \uC804\uD658\uC744 \uD3EC\uD568\uD558\uBA70 prefab, Addressable identity,
+    \uC124\uCE58\xB7\uBCF5\uAD6C\xB7rollback \uACC4\uC57D\uC740 \uBCC0\uACBD\uD558\uC9C0
+    \uC54A\uC558\uC2B5\uB2C8\uB2E4."
+  _dependenciesOverride: com.actionfit.custompackagemanager@1.1.114;com.actionfit.content-core@0.2.3;com.actionfit.time@1.0.4;com.actionfit.lava-rush@0.1.11;com.actionfit.referencebinding@0.2.2;com.actionfit.ui.foundation@2.0.5;com.actionfit.ui.popup@0.1.2;com.actionfit.lava-rush.ui@0.2.4;com.actionfit.cat.app@0.2.2;com.coffee.ui-effect@5.10.8;com.coffee.ui-particle@4.12.1;com.coffee.softmask-for-ugui@3.5.0;com.actionfit.uilighteffector@1.0.0;jp.hadashikick.vcontainer@1.16.8

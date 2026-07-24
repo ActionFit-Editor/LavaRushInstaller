@@ -1,16 +1,16 @@
-# Lava Rush 0.2 Release Candidate Matrix
+# Lava Rush 0.2.1 Release Candidate Matrix
 
 ## Candidate
 
-- Bundle: `lava-rush@0.2.0`
-- Installer URL after separate publication: `https://github.com/ActionFit-Editor/LavaRushInstaller.git#0.2.0`
+- Bundle: `lava-rush@0.2.1`
+- Installer URL after separate publication: `https://github.com/ActionFit-Editor/LavaRushInstaller.git#0.2.1`
 - Candidate selection date: `2026-07-24`
 - Publication state: not published by MCC-1632
 - Catalog state: unchanged by MCC-1632
 
-Fresh remote inspection found `0.2.0` unused for `LavaRushUI`, `Cat_App`, `LavaRushCatMergeTheme`, and `LavaRushInstaller`. Existing shared-owner tags were retained at engine `0.1.11`, Content Core `0.2.3`, Time `1.0.4`, ReferenceBinding `0.2.1`, UI Foundation `2.0.5`, UI Popup `0.1.1`, and Custom Package Manager `1.1.114`.
+Fresh remote inspection selected unused source versions `com.actionfit.referencebinding@0.2.2`, `com.actionfit.lava-rush.ui@0.2.4`, `com.actionfit.cat.app@0.2.2`, `com.actionfit.lava-rush.theme.catmerge@0.2.1`, and `com.actionfit.lava-rush.installer@0.2.1`. Lava Rush UI `0.2.3` became occupied on the target branch by the background physical-input lifetime change before this graph was integrated, so the ReferenceBinding pump closure moved to the next unused patch. Existing shared-owner pins remain engine `0.1.11`, Content Core `0.2.3`, Time `1.0.4`, UI Foundation `2.0.5`, UI Popup `0.1.2`, and Custom Package Manager `1.1.114`.
 
-The authoritative required graph is `Editor/ContentBundleProfile.json`. It contains fourteen all-required entries: the eight ActionFit runtime/owner packages, Cat App, four immutable visual packages, and VContainer. The optional `com.actionfit.lava-rush.theme.catmerge@0.2.0` preset is intentionally absent.
+The authoritative required graph is `Editor/ContentBundleProfile.json`. It contains fourteen all-required entries: the eight ActionFit runtime/owner packages, Cat App, four immutable visual packages, and VContainer. The optional `com.actionfit.lava-rush.theme.catmerge@0.2.1` preset is intentionally absent.
 
 ## Automated Evidence Matrix
 
@@ -32,7 +32,7 @@ The authoritative required graph is `Editor/ContentBundleProfile.json`. It conta
 
 ## Rollback Pins
 
-The current `0.2.0` candidate pins are recorded in `Editor/ContentBundleProfile.json` and `com.actionfit.lava-rush.ui/Documentation~/ConsumerMigration.md`. Custom Package Manager owns manifest compensation and bundle release; Addressables rollback uses the consuming project's separate serialized-state snapshot.
+The current `0.2.1` candidate pins are recorded in `Editor/ContentBundleProfile.json` and `com.actionfit.lava-rush.ui/Documentation~/ConsumerMigration.md`. Custom Package Manager owns manifest compensation and bundle release; Addressables rollback uses the consuming project's separate serialized-state snapshot.
 
 The last published one-URL baseline is installer `0.1.16` with manager `1.1.113`, engine `0.1.10`, UI Foundation `2.0.4`, UI `0.1.23`, and the same visual revisions. Returning to that breaking line also requires restoring its matching project Runtime from source control. A package-only downgrade or dual controller architecture is unsupported.
 
