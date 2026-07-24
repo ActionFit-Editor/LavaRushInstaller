@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -10,10 +11,10 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
     public sealed class LavaRushInstallerBootstrapTests
     {
         [TestCase("", "Missing")]
-        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.113", "Exact")]
-        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.112", "UpgradeCanonical")]
+        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.114", "Exact")]
+        [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.1.113", "UpgradeCanonical")]
         [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#1.2.0", "PreserveNewerCanonical")]
-        [TestCase("https://github.com/SomeoneElse/Custom_Package_Manager.git#1.1.113", "Conflict")]
+        [TestCase("https://github.com/SomeoneElse/Custom_Package_Manager.git#1.1.114", "Conflict")]
         [TestCase("https://github.com/ActionFit-Editor/Custom_Package_Manager.git#main", "Conflict")]
         [TestCase("file:com.actionfit.custompackagemanager", "Conflict")]
         public void ClassifyManagerDependency_PreservesUnsafeValuesAndUpgradesOnlyCanonicalOlderTag(
@@ -23,17 +24,17 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(LavaRushInstallerBootstrap.ClassifyManagerDependency(currentValue, "").ToString(), Is.EqualTo(expected));
         }
 
-        [TestCase("1.1.113", "EmbeddedCompatible")]
+        [TestCase("1.1.114", "EmbeddedCompatible")]
         [TestCase("1.2.0", "EmbeddedCompatible")]
-        [TestCase("1.1.112", "EmbeddedTooOld")]
+        [TestCase("1.1.113", "EmbeddedTooOld")]
         public void ClassifyManagerDependency_PreservesEmbeddedPackage(string version, string expected)
         {
             Assert.That(LavaRushInstallerBootstrap.ClassifyManagerDependency("", version).ToString(), Is.EqualTo(expected));
         }
 
         [TestCase("", false)]
-        [TestCase("1.1.112", false)]
-        [TestCase("1.1.113", true)]
+        [TestCase("1.1.113", false)]
+        [TestCase("1.1.114", true)]
         [TestCase("1.2.0", true)]
         [TestCase("main", false)]
         public void IsManagerApiVersionCompatible_RejectsStaleLoadedAssembly(string version, bool expected)
@@ -50,7 +51,7 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
 
             Profile profile = JsonUtility.FromJson<Profile>(asset.text);
             Assert.That(profile.bundleId, Is.EqualTo("lava-rush"));
-            Assert.That(profile.bundleVersion, Is.EqualTo("0.1.16"));
+            Assert.That(profile.bundleVersion, Is.EqualTo("0.2.0"));
             Assert.That(profile.bootstrapPackageId, Is.EqualTo(LavaRushInstallerBootstrap.InstallerPackageId));
             Assert.That(profile.packages.Select(package => package.packageId), Is.EquivalentTo(new[]
             {
@@ -58,9 +59,11 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
                 "com.actionfit.content-core",
                 "com.actionfit.time",
                 "com.actionfit.lava-rush",
+                "com.actionfit.referencebinding",
                 "com.actionfit.ui.foundation",
                 "com.actionfit.ui.popup",
                 "com.actionfit.lava-rush.ui",
+                "com.actionfit.cat.app",
                 "com.coffee.ui-effect",
                 "com.coffee.ui-particle",
                 "com.coffee.softmask-for-ugui",
@@ -92,18 +95,42 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             Assert.That(manager.removeOnRelease, Is.False);
             Assert.That(profile.packages.Single(package =>
                 package.packageId == "com.actionfit.lava-rush.ui").required, Is.True);
+            Assert.That(profile.packages.Single(package =>
+                package.packageId == "com.actionfit.cat.app").required, Is.True);
             Assert.That(Version(profile, "com.actionfit.content-core"), Is.EqualTo("0.2.3"));
             Assert.That(Version(profile, "com.actionfit.time"), Is.EqualTo("1.0.4"));
-            Assert.That(Version(profile, "com.actionfit.lava-rush"), Is.EqualTo("0.1.10"));
-            Assert.That(Version(profile, "com.actionfit.ui.foundation"), Is.EqualTo("2.0.4"));
+            Assert.That(Version(profile, "com.actionfit.lava-rush"), Is.EqualTo("0.1.11"));
+            Assert.That(Version(profile, "com.actionfit.referencebinding"), Is.EqualTo("0.2.1"));
+            Assert.That(Version(profile, "com.actionfit.ui.foundation"), Is.EqualTo("2.0.5"));
             Assert.That(Version(profile, "com.actionfit.ui.popup"), Is.EqualTo("0.1.1"));
-            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.1.23"));
+            Assert.That(Version(profile, "com.actionfit.lava-rush.ui"), Is.EqualTo("0.2.0"));
+            Assert.That(Version(profile, "com.actionfit.cat.app"), Is.EqualTo("0.2.0"));
             Assert.That(Version(profile, "com.coffee.ui-effect"), Is.EqualTo("5.10.8"));
             Assert.That(Version(profile, "com.coffee.ui-particle"), Is.EqualTo("4.12.1"));
             Assert.That(Version(profile, "com.coffee.softmask-for-ugui"), Is.EqualTo("3.5.0"));
             Assert.That(Version(profile, "com.actionfit.uilighteffector"), Is.EqualTo("1.0.0"));
             Assert.That(Version(profile, "jp.hadashikick.vcontainer"), Is.EqualTo("1.16.8"));
             Assert.That(profile.allowedReleaseGitHubLogins, Is.EqualTo(new[] { "JewooSong" }));
+        }
+
+        [Test]
+        public void Installer_RemainsDependencyFreeAndEditorAssemblyHasNoPackageReferences()
+        {
+            TextAsset packageManifest = AssetDatabase.LoadAssetAtPath<TextAsset>(
+                "Packages/com.actionfit.lava-rush.installer/package.json");
+            TextAsset assemblyDefinition = AssetDatabase.LoadAssetAtPath<TextAsset>(
+                "Packages/com.actionfit.lava-rush.installer/Editor/com.actionfit.lava-rush.installer.Editor.asmdef");
+
+            Assert.That(packageManifest, Is.Not.Null);
+            Assert.That(Regex.IsMatch(
+                packageManifest.text,
+                "\"dependencies\"\\s*:\\s*\\{\\s*\\}",
+                RegexOptions.CultureInvariant), Is.True);
+            Assert.That(assemblyDefinition, Is.Not.Null);
+
+            AssemblyDefinition definition = JsonUtility.FromJson<AssemblyDefinition>(assemblyDefinition.text);
+            Assert.That(definition.includePlatforms, Is.EqualTo(new[] { "Editor" }));
+            Assert.That(definition.references, Is.Empty);
         }
 
         [Test]
@@ -167,6 +194,13 @@ namespace ActionFit.LavaRushInstaller.Editor.Tests
             public bool required;
             public bool removeOnRelease;
             public bool allowCompatibleRegistryVersion;
+        }
+
+        [Serializable]
+        private sealed class AssemblyDefinition
+        {
+            public string[] references = Array.Empty<string>();
+            public string[] includePlatforms = Array.Empty<string>();
         }
 
         private sealed class FakeResult

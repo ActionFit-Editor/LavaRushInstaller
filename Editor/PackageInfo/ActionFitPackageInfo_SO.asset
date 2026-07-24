@@ -18,18 +18,19 @@ MonoBehaviour:
   _repositoryVisibility: 0
   _owner: ActionFit
   _status: candidate
-  _description: Installs the complete Lava Rush engine and authored UI bundle from
-    one public Git URL, preserves explicitly embedded UI edits, then self-removes
-    after verified registration.
-  _releaseNote: "- \uD328\uD0A4\uC9C0 \uB2E8\uC77C \uC18C\uC720 production \uC804\uD658\uC744
-    \uC644\uB8CC\uD55C Lava Rush UI 0.1.23\uC744 \uD544\uC218 \uBC84\uC804\uC73C\uB85C
-    \uACE0\uC815\uD569\uB2C8\uB2E4.\n- canonical Main\uC758 \uC804\uCCB4-flow popup
-    queue\uB97C \uC704\uD574 UI Popup 0.1.1\uC744 \uD544\uC218 \uBC88\uB4E4 \uC758\uC874\uC131\uC73C\uB85C
-    \uCD94\uAC00\uD588\uC2B5\uB2C8\uB2E4.\n- engine 0.1.10, bundle profile\uACFC
-    bootstrap session key\uB97C installer 0.1.16\uC73C\uB85C \uB3D9\uAE30\uD654\uD588\uC2B5\uB2C8\uB2E4.\n-
-    \uD638\uD658\uB418\uB294 embedded UI \uBCF4\uC874, \uBC84\uC804 \uCDA9\uB3CC
-    \uC9C4\uB2E8, immutable visual dependency\uC640 self-removal \uACC4\uC57D\uC740
-    \uC720\uC9C0\uD569\uB2C8\uB2E4.\n- Caution: \uC624\uB798\uB41C embedded UI \uB610\uB294
-    UI Popup \uB204\uB77D\uC740 \uC790\uB3D9 \uB36E\uC5B4\uC4F0\uAE30 \uB300\uC2E0
-    \uBA85\uC2DC\uC801 \uC124\uCE58 \uCDA9\uB3CC\uB85C \uBCF4\uACE0\uB429\uB2C8\uB2E4."
+  _description: "\uD558\uB098\uC758 Public Git URL\uB85C Lava Rush engine, direct
+    UI controller, Cat \uC81C\uD488 \uC870\uD569\uACFC immutable visual dependency\uB97C
+    \uC124\uCE58\uD558\uACE0 \uAC80\uC99D \uD6C4 self-remove\uD569\uB2C8\uB2E4."
+  _releaseNote: "- `com.actionfit.lava-rush.ui@0.2.0`\uACFC `com.actionfit.cat.app@0.2.0`\uC744
+    \uD544\uC218\uB85C \uD3EC\uD568\uD558\uB294 breaking bundle graph\uB97C \uC900\uBE44\uD588\uC2B5\uB2C8\uB2E4.\n-
+    engine `0.1.11`, ReferenceBinding `0.2.1`, UI Foundation `2.0.5`, Custom Package
+    Manager `1.1.114`\uC640 \uBAA8\uB4E0 immutable visual dependency\uB97C \uC815\uD655\uD788
+    \uACE0\uC815\uD588\uC2B5\uB2C8\uB2E4.\n- Addressables \uB4F1\uB85D\uC740 bundle
+    \uC124\uCE58\uC640 \uBD84\uB9AC\uB418\uBA70 \uC124\uCE58 \uD6C4 Cat App\uC758
+    read-only preview\uC640 \uBCC4\uB3C4 \uD655\uC778\uD615 create-only \uBA54\uB274\uC5D0\uC11C\uB9CC
+    \uC218\uD589\uB429\uB2C8\uB2E4.\n- \uD638\uD658\uB418\uB294 embedded UI\uC640
+    \uC0AC\uC6A9\uC790 package \uAC12, ownership journal, shared dependency, self-removal
+    \uBC0F rollback \uACC4\uC57D\uC744 \uC720\uC9C0\uD569\uB2C8\uB2E4.\n- Caution:
+    theme\uC740 optional\uC774\uACE0 publication, Git push/tag, catalog append\uC640
+    deployment\uB294 \uD3EC\uD568\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
   _dependenciesOverride: 
